@@ -1,0 +1,35 @@
+.MuiBox-root {
+  width: 100%;
+  background-color: #fff;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.about:hover{
+  color: white;
+}
+
+.navbar_nav {
+  display: flex;
+}
+
+.avatar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cart_modal .ant-modal-footer {
+  visibility: hidden;
+}
+
+.shopping_cart{
+  margin-top: 11px;
+  margin-left: 56rem;
+  font-size: 46px !important;
+}
+
+.cart_modal{
+  width: 43rem !important;
+}

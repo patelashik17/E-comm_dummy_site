@@ -1,0 +1,134 @@
+li {
+  list-style-type: none;
+}
+
+.ant-modal-content{
+  width: 52rem;
+}
+
+.cart_page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+  max-height: 100vh
+}
+
+.cart_table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid black;
+  margin-top: 1rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.checkOutbtn{
+  margin-left: 14rem !important;
+  margin-top: -59px !important;
+}
+
+.head_row{
+  font-weight: bold !important;
+  font-size: 15px !important;
+}
+
+.shoppingbtn{
+  margin-left: -11rem !important;
+  margin-top: 41px !important;
+}
+
+.calculateTotal{
+  font-weight: bold !important;
+}
+
+.cart_table th,
+.cart_table td {
+  padding: 0.5rem;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.cart_table th {
+  font-weight: bold;
+  background-color: #f2f2f2;
+}
+
+.cart_img {
+  height: 34px !important;
+  width: 3rem !important;
+}
+
+.cart_table h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.quantity_section button {
+  padding: 0.2rem 0.5rem;
+  background-color: #2874f0;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.quantity_section button:hover {
+  background-color: #1c49a6;
+}
+
+.quantity_section .form-control {
+  margin: 0 0.5rem;
+}
+
+.form-control{
+  width: 2rem;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.total_section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f2f2f2;
+}
+
+.total_section p {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.total_amount{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 2rem;
+  margin-left: -28rem;
+  font-size: 18px;
+  width: 12rem;
+  border-radius: 5px;
+  color: blacke;
+  margin-top: 2rem;
+}
+
+.total_section button {
+  padding: 0.5rem 1rem;
+  background-color: #2874f0;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.total_section button:hover {
+  background-color: #1c49a6;
+}
