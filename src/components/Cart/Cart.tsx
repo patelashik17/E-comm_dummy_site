@@ -1,18 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect , useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Button from "@mui/material/Button";
 import { DeleteTwoTone } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
-import "./Cart.css";
-import {
-  setProducts,
-  incrementQuantity,
-  decrementQuantity,
-  deleteProduct,
-  setLoading,
-  setError,
-} from "./Reducer/Reducer";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -20,6 +11,15 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import "./Cart.css";
+import {
+setProducts,
+incrementQuantity,
+  decrementQuantity,
+  deleteProduct,
+  setLoading,
+  setError,
+} from "./Reducer/Reducer";
 
 function ccyFormat(num: number) {
   return `${num.toFixed(2)}`;
@@ -91,6 +91,14 @@ const Cart: React.FC = () => {
     }
   };
 
+  
+  if (loading) {
+    return <center><h1>Loading......</h1></center>;
+  }
+  
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   if (products.length === 0) {
     return (
       <p>
@@ -100,16 +108,8 @@ const Cart: React.FC = () => {
     );
   }
 
-  if (loading) {
-    return <p>Loading......</p>;
-  }
-
-  if (error) {
-    return <p>Error: {error}</p>;
-  }
-
   return (
-    <div className="cart_page">
+    <div className="cart_page">   
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="spanning table">
           <TableHead>

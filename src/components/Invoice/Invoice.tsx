@@ -7,7 +7,7 @@ export interface Props {
   quantity?: number;
 }
 
-const Invoice: React.FC<Props> = (props: any) => {
+const Invoice: React.FC<Props> = () => {
   const { products } = useSelector((state: any) => state.CartReducer);
 
   const calculateTotal = () => {

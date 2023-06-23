@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect , useState,useCallback } from "react";
 import { Button } from "antd";
 import "./HomePage.css";
 import Navigation from "../Navigation/Navigation";
@@ -7,12 +7,21 @@ import {
   setBedgeCount,
   setProductData,
 } from "./Reducer/Reducer";
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 import { useDispatch,useSelector } from "react-redux";
 
 const Homepage = () => {
   const productData = useSelector((state:any) => state.HomePage.productData);
   const bedgeCount = useSelector((state:any) => state.HomePage.bedgeCount);
+  const [open, setOpen] = useState(false);
   const dispatch=useDispatch();
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleOpen = () => {
+    setOpen(true);
+  };
   
   useEffect(() => {
     fetchUserData();
@@ -45,6 +54,8 @@ const Homepage = () => {
       console.error("Error adding data:", error);
     }
   };
+
+
 
 
   return (
