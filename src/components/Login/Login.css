@@ -1,51 +1,50 @@
-.page{
-    background-color: #f4f4f4;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.page {
+  background-color: #f4f4f4;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.login_page{
-    max-width: 100rem;
-    max-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    height: 30rem;
-    width: 50rem;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+.login_page {
+  max-width: 100rem;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 30rem;
+  width: 50rem;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.heading{
-    margin-top: -4rem;
+.heading {
+  margin-top: -4rem;
 }
 
-
-.textInput{
-    margin-top: 2rem;
-    max-width: 100%;
-    max-height: 100vh;
-    height:7vh;
-    width: 20rem;
-    font-size: 17px;
+.textInput {
+  margin-top: 2rem;
+  max-width: 100%;
+  max-height: 100vh;
+  height: 7vh;
+  width: 20rem;
+  font-size: 17px;
 }
 
-.textPassword{
-    margin-top: 20px;
-    max-width: 100%;
-    max-height: 100vh;
-    height:7vh;
-    width: 20rem;
-    font-size: 17px;
+.textPassword {
+  margin-top: 20px;
+  max-width: 100%;
+  max-height: 100vh;
+  height: 7vh;
+  width: 20rem;
+  font-size: 17px;
 }
 
-.submit_btn{
-    margin-left: 14rem !important;
-    margin-top: 2rem !important;
-    width:6rem
+.submit_btn {
+  margin-left: 14rem !important;
+  margin-top: 2rem !important;
+  width: 6rem;
 }

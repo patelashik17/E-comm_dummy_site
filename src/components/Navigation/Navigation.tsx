@@ -1,9 +1,9 @@
-import React , {useState} from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AvatarGroup from "@mui/material/AvatarGroup";
-import { UserOutlined } from '@ant-design/icons';
-import { Avatar, Space } from 'antd';
+import { UserOutlined } from "@ant-design/icons";
+import { Avatar, Space } from "antd";
 import "./Navigation.css";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -13,22 +13,9 @@ import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Link, useNavigate } from "react-router-dom";
-// import Avatar from "@mui/material/Avatar";
-import { Modal } from 'antd';
-import Cart from '../Cart/Cart';
-import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone';
+import { Modal } from "antd";
+import Cart from "../Cart/Cart";
 
-const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
 type AccountMenuProps = {
   src: string;
 };
@@ -49,7 +36,6 @@ const Navigation: React.FC<AccountMenuProps> = (props: AccountMenuProps) => {
     setIsModalOpen(false);
   };
 
-
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -61,10 +47,10 @@ const Navigation: React.FC<AccountMenuProps> = (props: AccountMenuProps) => {
     localStorage.removeItem("token");
     navigate("/");
   };
-const handleLogout=()=>{
-  localStorage.removeItem("token");
-  navigate("/");
-}
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  };
   return (
     <div className="MuiBox-root">
       <Box
@@ -82,7 +68,6 @@ const handleLogout=()=>{
             minWidth: "8rem",
             marginLeft: "21px",
             marginTop: "18px",
-            
           }}
         >
           {" "}
@@ -102,20 +87,23 @@ const handleLogout=()=>{
         </Link>
         <Link
           to="/about-us"
-        className="about"
+          className="about"
           style={{
             textDecoration: "none",
             color: "inherit",
             minWidth: "13rem",
             marginTop: "18px",
             marginLeft: "-6rem",
-            
           }}
         >
           {" "}
           <Typography sx={{ minWidth: 100 }}>About us</Typography>
         </Link>
-        <ShoppingCartIcon fontSize="large" className="shopping_cart" onClick={showModal}/>
+        <ShoppingCartIcon
+          fontSize="large"
+          className="shopping_cart"
+          onClick={showModal}
+        />
         <div className="avatar" style={{ marginLeft: "auto" }}>
           <Tooltip title="Account settings">
             <IconButton
@@ -127,15 +115,17 @@ const handleLogout=()=>{
               aria-expanded={open ? "true" : undefined}
             >
               <AvatarGroup>
-              <Avatar style={{ backgroundColor: '#87d068' , marginTop:'4px' }} size={47} icon={<UserOutlined />}  />
+                <Avatar
+                  style={{ backgroundColor: "#87d068", marginTop: "4px" }}
+                  size={47}
+                  icon={<UserOutlined />}
+                />
               </AvatarGroup>
             </IconButton>
           </Tooltip>
-          
         </div>
-        
       </Box>
-     
+
       <Menu
         anchorEl={anchorEl}
         id="account-menu"
@@ -178,8 +168,14 @@ const handleLogout=()=>{
           Logout
         </MenuItem>
       </Menu>
-      <Modal title="Cart item" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} className="cart_modal">
-       <Cart/>
+      <Modal
+        title="Cart item"
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        className="cart_modal"
+      >
+        <Cart />
       </Modal>
     </div>
   );

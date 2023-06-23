@@ -11,10 +11,10 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <SnackbarProvider maxSnack={3}>
-  <Provider store={store}>
-  <App />
- </Provider>
- </SnackbarProvider>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </SnackbarProvider>
 );
 
 reportWebVitals();

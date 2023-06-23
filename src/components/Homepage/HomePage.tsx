@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Button } from "antd";
 import "./HomePage.css";
 import Navigation from "../Navigation/Navigation";
@@ -6,13 +6,12 @@ import {
   setAddSuccess,
   setBedgeCount,
   setProductData,
-} from "./Redux/Reducer/Reducer";
+} from "./Reducer/Reducer";
 import { useDispatch,useSelector } from "react-redux";
 
 const Homepage = () => {
   const productData = useSelector((state:any) => state.HomePage.productData);
   const bedgeCount = useSelector((state:any) => state.HomePage.bedgeCount);
-  const addSuccess = useSelector((state:any) => state.HomePage.addSuccess);
   const dispatch=useDispatch();
   
   useEffect(() => {

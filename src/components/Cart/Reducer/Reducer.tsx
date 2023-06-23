@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface CartState {
   products: any;
@@ -13,7 +13,7 @@ const initialState: CartState = {
 };
 
 const cartSlice = createSlice({
-  name: 'cart',
+  name: "cart",
   initialState,
   reducers: {
     setProducts: (state, action: PayloadAction<any>) => {
@@ -34,7 +34,9 @@ const cartSlice = createSlice({
       }
     },
     deleteProduct: (state, action: PayloadAction<number>) => {
-      state.products = state.products.filter((item: any) => item.id !== action.payload);
+      state.products = state.products.filter(
+        (item: any) => item.id !== action.payload
+      );
     },
     setLoading: (state, action: PayloadAction<boolean>) => {
       state.loading = action.payload;

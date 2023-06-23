@@ -2,7 +2,7 @@ li {
   list-style-type: none;
 }
 
-.ant-modal-content{
+.ant-modal-content {
   width: 52rem;
 }
 
@@ -12,7 +12,7 @@ li {
   align-items: center;
   flex-direction: column;
   padding: 1rem;
-  max-height: 100vh
+  max-height: 100vh;
 }
 
 .cart_table {
@@ -25,22 +25,22 @@ li {
   margin-bottom: 1rem;
 }
 
-.checkOutbtn{
+.checkOutbtn {
   margin-left: 14rem !important;
   margin-top: -59px !important;
 }
 
-.head_row{
+.head_row {
   font-weight: bold !important;
   font-size: 15px !important;
 }
 
-.shoppingbtn{
+.shoppingbtn {
   margin-left: -11rem !important;
   margin-top: 41px !important;
 }
 
-.calculateTotal{
+.calculateTotal {
   font-weight: bold !important;
 }
 
@@ -85,7 +85,7 @@ li {
   margin: 0 0.5rem;
 }
 
-.form-control{
+.form-control {
   width: 2rem;
   margin-left: 5px;
   margin-right: 5px;
@@ -106,7 +106,7 @@ li {
   font-weight: bold;
 }
 
-.total_amount{
+.total_amount {
   justify-content: center;
   align-items: center;
   display: flex;

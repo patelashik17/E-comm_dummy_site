@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { Input } from "antd";
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
-import { setEmail,setPassword,setSubmit } from "./Reducer/Reducer";
+
 const Login = () => {
   const [email, setEmail] = useState<string | number>("");
   const [password, setPassword] = useState<any>("");
-  const [submit,setSubmit]=useState<any>(false);
+  const [submit, setSubmit] = useState<any>(false);
 
   const onChangeEmail = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -16,7 +16,7 @@ const Login = () => {
     setEmail(e.target.value);
     console.log(e.target.value);
   };
-const navigate=useNavigate();
+  const navigate = useNavigate();
   const onChangePassword = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -27,10 +27,10 @@ const navigate=useNavigate();
   const handleSubmit = (event: any) => {
     event.preventDefault();
     setSubmit(true);
-    const maths=Math.floor(Math.random()*100);
-    localStorage.setItem("token",maths.toString());
+    const maths = Math.floor(Math.random() * 100);
+    localStorage.setItem("token", maths.toString());
     navigate("/homepage");
-};
+  };
 
   return (
     <div className="page">
@@ -46,7 +46,6 @@ const navigate=useNavigate();
             onChange={onChangeEmail}
             required
           />
-          
           <Input.Password
             className="textPassword"
             placeholder="Enter Password"
@@ -57,8 +56,9 @@ const navigate=useNavigate();
             }
             required
           />
-           
-          <Button variant="contained" className="submit_btn" type="submit">Login</Button> 
+          <Button variant="contained" className="submit_btn" type="submit">
+            Login
+          </Button>
         </div>
       </form>
     </div>

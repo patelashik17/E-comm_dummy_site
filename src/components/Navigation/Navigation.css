@@ -7,7 +7,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.about:hover{
+.about:hover {
   color: white;
 }
 
@@ -24,12 +24,12 @@
   visibility: hidden;
 }
 
-.shopping_cart{
+.shopping_cart {
   margin-top: 11px;
   margin-left: 56rem;
   font-size: 46px !important;
 }
 
-.cart_modal{
+.cart_modal {
   width: 43rem !important;
 }
