@@ -25,9 +25,15 @@
 }
 
 .shopping_cart {
+  cursor: pointer;
   margin-top: 11px;
   margin-left: 56rem;
   font-size: 46px !important;
+  transition: transform .3s;
+  &:hover{
+    color:#007bff;
+    transform: scale(1.1);
+  }
 }
 
 .cart_modal {

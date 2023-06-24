@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { Input } from "antd";
 import Button from "@mui/material/Button";
-import "./Login.css";
+import "./Login.scss";
 import { useNavigate } from "react-router-dom";
 
 const EmailRegex = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i);
@@ -46,7 +46,6 @@ const Login = () => {
       setPasswordError(false);
     }
     if (email.match(EmailRegex) && password.length >= 8) {
-      console.log("hi");
       navigate("/homepage");
     }
   };

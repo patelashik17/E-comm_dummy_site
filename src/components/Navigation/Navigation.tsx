@@ -4,7 +4,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AvatarGroup from "@mui/material/AvatarGroup";
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Space } from "antd";
-import "./Navigation.css";
+import "./Navigation.scss";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import ListItemIcon from "@mui/material/ListItemIcon";

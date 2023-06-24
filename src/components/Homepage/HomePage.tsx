@@ -1,6 +1,5 @@
 import { useEffect , useState,useCallback } from "react";
 import { Button } from "antd";
-import "./HomePage.css";
 import Navigation from "../Navigation/Navigation";
 import {
   setAddSuccess,
@@ -10,6 +9,7 @@ import {
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useDispatch,useSelector } from "react-redux";
+import "./HomePage.scss";
 
 const Homepage = () => {
   const productData = useSelector((state:any) => state.HomePage.productData);

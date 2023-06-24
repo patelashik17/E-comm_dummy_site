@@ -1,7 +1,7 @@
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import "./Invoice.css";
+import "./Invoice.scss";
 
 export interface Props {
   quantity?: number;
@@ -18,6 +18,20 @@ const Invoice: React.FC<Props> = () => {
       return total + item.quantity * item.price;
     }, 0);
   };
+
+  const funDate = () => {
+    const date = new Date();
+    return (
+      date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()
+    );
+  };
+
+  const getRandom = () => {
+    let min = 10000;
+    let max = 99999;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
+
   return (
     <>
       <PayPalScriptProvider
@@ -30,10 +44,10 @@ const Invoice: React.FC<Props> = () => {
           <div className="invoice-title">
             <div id="main-title">
               <h4>INVOICE</h4>
-              <span>#89292</span>
+              <span>#{getRandom()}</span>
             </div>
 
-            <span id="date">16/02/2019</span>
+            <span id="date">{funDate()}</span>
           </div>
 
           <div className="invoice-details">

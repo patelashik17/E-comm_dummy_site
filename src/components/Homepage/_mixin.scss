@@ -1,0 +1,10 @@
+@mixin flex($align) {
+    display: flex;
+    justify-content: center;
+    align-items: $align;
+  }
+  
+  @mixin heiWei($height, $width) {
+    height: $height;
+    width: $width;
+  }
