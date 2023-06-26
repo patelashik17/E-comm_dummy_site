@@ -11,6 +11,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import axios from "axios";
 import "./Cart.scss";
 import {
 setProducts,
@@ -34,31 +35,27 @@ const Cart: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       dispatch(setLoading(true));
-
+  
       try {
-        const response = await fetch(
+        const response = await axios.get(
           "https://e-comm-b9d1a-default-rtdb.firebaseio.com/productData.json"
         );
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch product data");
-        }
-
-        const data = await response.json();
-
-        const products = Object.values(data).map((product: any) => ({
+        dispatch(setProducts(response.data));
+  
+        const product = Object.values(response.data).map((product: any) => ({
           ...product,
           quantity: 1,
         }));
-        dispatch(setProducts(products));
+        dispatch(setProducts(product));
       } catch (error: any) {
         dispatch(setError(error.message));
       }
       dispatch(setLoading(false));
     };
-
+  
     fetchData();
   }, [dispatch]);
+  
 
   const handleIncrementQuantity = (productId: number) => {
     dispatch(incrementQuantity(productId));
@@ -77,11 +74,9 @@ const Cart: React.FC = () => {
   const handleDelete = async (productId: any) => {
     if (productId) {
       try {
-        await fetch(
+        await axios.delete(
           `https://e-comm-b9d1a-default-rtdb.firebaseio.com/productData/${productId}.json`,
-          {
-            method: "DELETE",
-          }
+         productId
         );
         dispatch(deleteProduct(productId));
         console.log("Item deleted successfully");

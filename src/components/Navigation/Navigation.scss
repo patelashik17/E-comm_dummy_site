@@ -1,7 +1,7 @@
 .MuiBox-root {
   width: 100%;
-  background-color: #fff;
-  height: 4rem;
+  background-color: rgba(28, 144, 211, 0.1); 
+  height: 3rem;
   display: flex;
   align-items: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -26,8 +26,8 @@
 
 .shopping_cart {
   cursor: pointer;
-  margin-top: 11px;
-  margin-left: 56rem;
+  margin-top: 3px;
+  margin-left: 40rem;
   font-size: 46px !important;
   transition: transform .3s;
   &:hover{
@@ -38,4 +38,16 @@
 
 .cart_modal {
   width: 43rem !important;
+}
+
+.about :hover{
+  color: #007bff;
+}
+
+.Homepage :hover{
+  color: #007bff;
+}
+
+.Login :hover{
+  color: #007bff;
 }

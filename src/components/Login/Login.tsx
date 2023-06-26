@@ -1,99 +1,75 @@
-import React, { useState } from "react";
-import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
-import { Input } from "antd";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import Button from "@mui/material/Button";
 import "./Login.scss";
 import { useNavigate } from "react-router-dom";
 
-const EmailRegex = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i);
+interface LoginForm {
+  email: string;
+  password: string;
+}
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [submit, setSubmit] = useState(false);
-  const [error, setError] = useState(false);
-  const [passwordError, setPasswordError] = useState(false);
-
-  const onChangeEmail = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setEmail(e.target.value);
-    setError(false);
-  };
-
   const navigate = useNavigate();
+  const schema = yup.object().shape({
+    email: yup.string().email().required("Email is required"),
+    password: yup.string().min(8).max(12).required("Enter password"),
+  });
 
-  const onChangePassword = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setPassword(e.target.value);
-    setPasswordError(false);
-  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginForm>({
+    resolver: yupResolver(schema),
+  });
 
-  const handleSubmit = (event: any) => {
-    event.preventDefault();
-    setSubmit(true);
+  const onSubmit = (data: LoginForm) => {
+    console.log(data);
     const maths = Math.floor(Math.random() * 100);
     localStorage.setItem("token", maths.toString());
-    if (!email.match(EmailRegex)) {
-      setError(true);
-    } else {
-      setError(false);
-    }
-    if (password.length < 8) {
-      setPasswordError(true);
-    } else {
-      setPasswordError(false);
-    }
-    if (email.match(EmailRegex) && password.length >= 8) {
-      navigate("/homepage");
-    }
+    navigate("/homepage");
   };
 
   return (
     <div className="page">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="login_page">
           <h1 className="heading">Login page</h1>
-          <Input
-            className={`textInput ${error ? "error" : ""}`}
-            placeholder="Enter email"
-            value={email}
-            type="email"
-            allowClear
-            onChange={onChangeEmail}
+  
+          <input
+            type="text"
+            className={`textInput `}
+            placeholder="Email..."
+            {...register("email")}
+           
           />
-          {error && (
-            <p
-              className="error_message"
-              style={{ color: "red", marginLeft: "-157px", marginTop: "10px" }}
-            >
-              Invalid email address
-            </p>
-          )}
-          <Input.Password
-            className={`textPassword ${passwordError ? "error" : ""}`}
-            placeholder="Enter Password"
-            onChange={onChangePassword}
-            value={password}
-            iconRender={(visible) =>
-              visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-            }
+          <p style={{ color: "red", marginLeft: "-12rem", marginTop: "10px" }}>
+            {errors.email?.message}
+          </p>
+          
+          <input
+            type="text"
+            className={`textPassword `}
+            placeholder="password..."
+            {...register("password")}
           />
-          {passwordError && (
-            <p
-              className="error_message"
-              style={{ color: "red", marginLeft: "18px", marginTop: "10px" }}
-            >
-              Password must be at least 8 characters long
-            </p>
-          )}
+          <p
+            className="error_message"
+            style={{ color: "red", marginLeft: "-1rem", marginTop: "10px" }}
+          >
+            {errors.password?.message}
+          </p>
           <Button variant="contained" className="submit_btn" type="submit">
             Login
           </Button>
+          
         </div>
       </form>
+      
     </div>
+    
   );
 };
 

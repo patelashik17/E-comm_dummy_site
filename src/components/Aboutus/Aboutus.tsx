@@ -1,9 +1,11 @@
+import { useSelector } from "react-redux";
 import Navigation from "../Navigation/Navigation";
 
 const Aboutus = () => {
+  const bedgeCount = useSelector((state:any) => state.HomePage.bedgeCount);
   return (
     <>
-      <Navigation src=""></Navigation>
+      <Navigation src="" bedgeCount={bedgeCount}></Navigation>
       <h1
         style={{
           display: "flex",

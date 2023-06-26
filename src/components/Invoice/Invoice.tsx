@@ -43,7 +43,7 @@ const Invoice: React.FC<Props> = () => {
         <div className="invoice-card">
           <div className="invoice-title">
             <div id="main-title">
-              <h4>INVOICE</h4>
+              <h4 >INVOICE</h4>
               <span>#{getRandom()}</span>
             </div>
 

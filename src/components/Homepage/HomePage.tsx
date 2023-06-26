@@ -1,4 +1,4 @@
-import { useEffect , useState,useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Button } from "antd";
 import Navigation from "../Navigation/Navigation";
 import {
@@ -6,63 +6,62 @@ import {
   setBedgeCount,
   setProductData,
 } from "./Reducer/Reducer";
-import Backdrop from '@mui/material/Backdrop';
-import CircularProgress from '@mui/material/CircularProgress';
-import { useDispatch,useSelector } from "react-redux";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 import "./HomePage.scss";
 
 const Homepage = () => {
   const productData = useSelector((state:any) => state.HomePage.productData);
   const bedgeCount = useSelector((state:any) => state.HomePage.bedgeCount);
   const [open, setOpen] = useState(false);
-  const dispatch=useDispatch();
-  const handleClose = () => {
+  const dispatch = useDispatch();
+
+  const handleClose = useCallback(() => {
     setOpen(false);
-  };
-  const handleOpen = () => {
+  }, []);
+
+  const handleOpen = useCallback(() => {
     setOpen(true);
-  };
-  
+  }, []);
+
   useEffect(() => {
     fetchUserData();
   }, []);
-  const fetchUserData = async () => {
-    const response = await fetch("https://dummyjson.com/products");
-    const data = await response.json();
-    dispatch(setProductData(data));
-    console.log(data);  
-  };
 
-  const addData = async (productId: any) => {
+  const fetchUserData = useCallback(async () => {
     try {
-      const selectedProduct = productData.products.find(
-        (product: any) => product.id === productId
-      );
-      const response = await fetch(
-        "https://e-comm-b9d1a-default-rtdb.firebaseio.com/productData.json",
-        {
-          method: "POST",
-          body: JSON.stringify(selectedProduct),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      setAddSuccess(true);
-      dispatch(setBedgeCount(bedgeCount + 1));
+      const response = await axios.get("https://dummyjson.com/products");
+      dispatch(setProductData(response.data));
+      console.log(response.data);
     } catch (error) {
-      console.error("Error adding data:", error);
+      console.error("Error fetching user data:", error);
     }
-  };
+  }, [dispatch]);
 
-
-
+  const addData = useCallback(
+    async (productId:any) => {
+      try {
+        const selectedProduct = productData.products.find(
+          (product:any) => product.id === productId
+        );
+        const response = await axios.post(
+          "https://e-comm-b9d1a-default-rtdb.firebaseio.com/productData.json",
+          selectedProduct
+        );
+        dispatch(setAddSuccess(true));
+        dispatch(setBedgeCount(bedgeCount + 1));
+      } catch (error) {
+        console.error("Error adding data:", error);
+      }
+    },
+    [bedgeCount, dispatch, productData.products]
+  );
 
   return (
     <>
-      <Navigation src="" />
+      <Navigation src="" bedgeCount={bedgeCount}/>
       <div className="product_page">
-        {productData?.products?.map((product: any, id: number) => (
+        {productData?.products?.map((product:any, id:any) => (
           <div className="box" key={id}>
             <ul>
               <img
@@ -72,9 +71,29 @@ const Homepage = () => {
               />
               <div className="desc">
                 <li className="id-hide">{product.id}</li>
-                <li className="prod_title">{product.title}</li>
-                <li className="prod_desc">{product.description}</li>
-                <li className="prod_price">₹ {product.price}</li>
+                <li
+                  className="prod_title"
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: "20px",
+                    marginBottom: "10px",
+                  }}
+                >
+                  {product.title}
+                </li>
+                <li className="prod_desc" style={{ lineHeight: "23px" }}>
+                  {product.description}
+                </li>
+                <li
+                  className="prod_price"
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: "18px",
+                    marginTop: "10px",
+                  }}
+                >
+                  ₹ {product.price}
+                </li>
                 <li>{product.rating.rate}</li>
               </div>
               <Button
@@ -84,13 +103,16 @@ const Homepage = () => {
               >
                 Add to cart
               </Button>
+              
             </ul>
           </div>
         ))}
       </div>
+      <div>
+       
+      </div>
     </>
   );
 };
-
 
 export default Homepage;
